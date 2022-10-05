@@ -50,7 +50,7 @@ This step focuses on performing sensitivity analysis, including "Reverse MR", "L
 7_SecondaryAnalyses_Reversed_direction_harmonisation.R
 7_SecondaryAnalyses_Reversed_direction_run_2SMR.R
 
-# Step 6: Create visualisations
+# Step 8: Create visualisations
 This step  create graphics diagnostics visualisation for main outcome two-sample MR including scatter plot, funnel plot, forest plot and leave-one-out plot
 We created forest plots for discovery, replication and meta analyses using the forestplot packages.
 
