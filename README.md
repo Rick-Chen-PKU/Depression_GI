@@ -2,56 +2,58 @@
 This code relates to the project titled "Depression and risk of gastrointestinal disorders: a comprehensive two-sample Mendelian randomization study".
 
 
-# Step 1: Create exposure datasets
-First, we needed to create exposure datasets. We downloaded complete summary statistics for epigenetic age acceleration (as measured by GrimAge, PhenoAge, HannumAge and Intrinsic HorvathAge) from https://datashare.ed.ac.uk/handle/10283/3645
+# Step 1: Calculate R2 and F-statistic
+First, we needed to calculate R2 and F-statistic for MDD instrumental variables. We downloaded complete summary statistics for MDD from PGC.
 
-1_create_exposure_datasets.R
+1_calculate_R2&Fstatistic.R
 
 # Step 2: Find LD proxies for missing SNPs
 Next, we needed to find linkage disequilibrium (LD) proxies for genetic variants missing in the outcome dataset. Here, we did this using the LDlinkR package.
 
-2.1_find_LD_proxies_for_FinnGen_outcomes.R
+2_find_LD_proxies_for_MainConsortium.R
 
-2.2_find_LD_proxies_for_PRACTICAL_subtypes.R
+# Step 3: Harmonisation
+This step conduct Harmonisation for UK Biobank and FinnGen outcome, produce instrumental variables Output in two-sample MR format.
 
-2.3_find_LD_proxies_for_CIMBA_subtypes.R
+3.1_harmonisation_for_MainConsortium.R
+3.2_harmonisation_for_FinnGen.R
 
+# Step 4: Run two-sample MR analysis
+Once our exposure and outcome datasets were ready, we ran the two-sample MR analysis. We did this separately for UK Biobank and FinnGen. 
 
-# Step 3: Run two-sample MR analysis
-Once our exposure and outcome datasets were ready, we ran the two-sample MR analysis. We did this separately for FinnGen, UK Biobank and international consortiums. We also ran the analysis for cancer subtypes in international consortiums.
+4_run_2SMR_for_MainConsortium.R
+5_run_2SMR_for_FinnGen.R
 
-3.1_run_2SMR_for_FinnGen.R
-
-3.2_run_2SMR_for_UKB.R
-
-3.3_run_2SMR_for_consortiums.R
-
-3.4_run_2SMR_for_additional_consortium_subtypes.R
-
-# Step 4: Run meta-analysis
+# Step 5: Run meta-analysis
 We combined two-sample MR results obtained in the previous step using a fixed-effect meta-analysis. This was done using the meta package.
 
-4_run_metaanalysis.R
+5_Mete_analysis.R
 
-# Step 5: Create visualisations
-We created plots for main, secondary and sensitivity analyses using the meta and ggforestplot packages.
+# Step 6: Sensitity Analyses
+This step focuses on performing sensitivity analysis, including "Remove_pleiotrpy_snps", "CAUSE", "risk_factor_outcome" and "negative_control_outcome".
 
-5.1_create_metaanalysis_plots_detail.R
+6_SensitityAnalyses_negative_control_outcome.R
+6_SensitityAnalyses_risk_factor_outcome.R
+6_SensitityAnalyses_run_2SMR_for_FinnGen_after_remove_pleiotrpy_snps.R
+6_SensitityAnalyses_run_2SMR_for_MainConsortium_after_remove_pleiotrpy_snps.R
+6_SensitityAnalyses_run_CAUSE_for_MDD_GERD.R
+6_SensitityAnalyses_run_CAUSE_for_MDD_IBS.R
+6_SensitityAnalyses_run_CAUSE_for_MDD_NAFLD.R
+6_SensitityAnalyses_run_CAUSE_for_MDD_PUD.R
 
-5.2_create_metaanalysis_plots_colour.R
+# Step 7: Secondary Analyses
+This step focuses on performing sensitivity analysis, including "Reverse MR", "LDSC" and "MVMR".
 
-5.3_create_plots_for_subtypes.R
+7_SecondaryAnalyses_LDSC.sh
+7_SecondaryAnalyses_MVMR.R
+7_SecondaryAnalyses_Reversed_direction_find_LD_proxies.R
+7_SecondaryAnalyses_Reversed_direction_harmonisation.R
+7_SecondaryAnalyses_Reversed_direction_run_2SMR.R
 
-5.4_run_2SMR_for_cancer_byproxy_outcomes_and_create_plots.R
+# Step 6: Create visualisations
+This step  create graphics diagnostics visualisation for main outcome two-sample MR including scatter plot, funnel plot, forest plot and leave-one-out plot
+We created forest plots for discovery, replication and meta analyses using the forestplot packages.
 
-5.5_create_ldsc_plots.R
-
-# Step 6: Run CAUSE analysis
-We ran CAUSE analyses for GrimAge acceleration and prostate and colorectal cancers only, as a sensitivity analysis.
-
-6.1_run_CAUSE_for_GrimAge_PrCinPRACTICAL.R
-
-6.2_run_CAUSE_for_GrimAge_CRCinGECCO.R
-
-
+8_Create_graphics_diagnostics_visualisations.R
+8_ForestPlot.R
 
