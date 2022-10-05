@@ -42,7 +42,7 @@ library(cowplot)
 
 exposure_trait = 'MDD'
 outcome_trait = 'NAFLD'
-# 第二部分开始分析
+
 dat = data.frame(fread(paste0('./GWAS/IVS/', exposure_trait, '_to_', outcome_trait, '_instruments.csv')))  
 
 ## Scatter plot:
@@ -71,5 +71,5 @@ save_plot(paste0("./GWAS/Scatter_plot_",
           nrow = 2, # and 2 rows
           # each individual subplot should have an aspect ratio of 1.3
           base_height = 6,
-          base_width = 6,  # 设置的宽度
+          base_width = 6, 
           dpi = 800)
