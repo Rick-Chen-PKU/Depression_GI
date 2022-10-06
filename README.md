@@ -22,7 +22,7 @@ This step conduct Harmonisation for UK Biobank and FinnGen outcome, produce inst
 Once our exposure and outcome datasets were ready, we ran the two-sample MR analysis. We did this separately for UK Biobank and FinnGen. 
 
 4_run_2SMR_for_MainConsortium.R  
-5_run_2SMR_for_FinnGen.R
+4_run_2SMR_for_FinnGen.R
 
 # Step 5: Run meta-analysis
 We combined two-sample MR results obtained in the previous step using a fixed-effect meta-analysis. This was done using the meta package.
